@@ -6,6 +6,24 @@ plugins {
 }
 
 android {
+
+    compileSdkVersion 33            // ควรอัปเป็น API 33 (Android 13) เพื่อใช้ SDK ตัวล่าสุด
+
+    defaultConfig {
+        applicationId "com.example.eascheck"   // เปลี่ยนเป็น Bundle ID จริงของคุณ
+        minSdkVersion 21                       // ถ้าต้องการใช้ plugin กล้อง + storage พื้นฐาน ให้ 21 ขึ้นไป  
+                                                // ถ้าใช้ Android 13 storage-permission แยก (READ_MEDIA_IMAGES) ก็ยังใช้ 21 ได้  
+        targetSdkVersion 33                    // ทดสอบกับ Android 13  
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // ถ้าคุณใช้ Java 11+ หรือ Kotlin DSL อาจต้องเพิ่ม compileOptions / kotlinOptions
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
     namespace = "com.fluttermapp.eascheck"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
